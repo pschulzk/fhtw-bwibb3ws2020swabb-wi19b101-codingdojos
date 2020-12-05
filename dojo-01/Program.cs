@@ -11,13 +11,13 @@ namespace dojo01
             test.Push("AAA");
             test.Push("BBB");
 
-            Console.WriteLine("Stack Length after Push: " + test.GetLength().ToString());
-            Console.WriteLine("Stack Peek after Push: " + test.Peek().ToString());
+            System.Diagnostics.Debug.WriteLine("Stack Length after Push: " + test.GetLength().ToString());
+            System.Diagnostics.Debug.WriteLine("Stack Peek after Push: " + test.Peek().ToString());
 
             test.Pop();
 
-            Console.WriteLine("Stack Length after Pop: " + test.GetLength().ToString());
-            Console.WriteLine("Stack Peek afteer Pop: " + test.Peek().ToString());
+            System.Diagnostics.Debug.WriteLine("Stack Length after Pop: " + test.GetLength().ToString());
+            System.Diagnostics.Debug.WriteLine("Stack Peek afteer Pop: " + test.Peek().ToString());
         }
     }
 }
