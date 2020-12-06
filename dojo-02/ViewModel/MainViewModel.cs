@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Dojo3Help.ViewModel;
+using System;
 using System.ComponentModel;
 using System.Windows.Threading;
 
 namespace dojo_02.ViewModel
 {
-    class MainViewModel : INotifyPropertyChanged
+    class MainViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        //public event PropertyChangedEventHandler PropertyChanged;
         private string _now;
 
         public MainViewModel()
@@ -26,7 +27,8 @@ namespace dojo_02.ViewModel
             private set
             {
                 _now = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("CurrentDateTime"));
+                RaisePropertyChanged();
+                // PropertyChanged.Invoke(this, new PropertyChangedEventArgs("CurrentDateTime"));
             }
         }
 
