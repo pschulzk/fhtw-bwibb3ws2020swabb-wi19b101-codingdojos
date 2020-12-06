@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dojo_02.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace dojo_02
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

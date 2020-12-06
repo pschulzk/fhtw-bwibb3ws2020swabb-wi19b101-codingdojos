@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dojo_02"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1200">
     <Grid Background="#FF020202">
@@ -107,9 +106,7 @@
 
                         <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
                             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                                <Label Content="{Binding CurrentTime}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White"/>
-                                <Label Content="{Binding CurrentDate}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White"/>
-
+                                <Label Content="{Binding CurrentDateTime}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White"/>
                             </StackPanel>
                         </Border>
                     </StackPanel>
