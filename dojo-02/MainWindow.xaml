@@ -1,0 +1,120 @@
+﻿<Window x:Class="dojo_02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dojo_02"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="960" Width="1200">
+    <Grid Background="#FF020202">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+        <Border Margin="10" BorderBrush="Red" BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Image Margin="10,0" Height="18" Source="Images/Warning-WF.png"/>
+                <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.RowSpan="2" Margin="5" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <StackPanel  Margin="5,0" Orientation="Vertical">
+                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Cloud sun02-WF.png"/>
+                                <Label Content="20 °" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Wind.png"/>
+                                <Label Content="12 km/h" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Solar.png"/>
+                                <Label Content="3.545 W" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Man-01.png"/>
+                                <Label Content="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Lock-WF.png"/>
+                                <Label Content="OK" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Border>
+
+                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Message Mail-WF.png"/>
+                                <Label Content="7" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Image Margin="10,10,5,10" Height="18" Source="Images/Tasks.png"/>
+                                <Label Content="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel>
+                        <Button Content="Übersicht" Margin="10,10,5,5" Height="48" FontSize="12" BorderBrush="#FFF9F9F9" Foreground="White" Background="#FF020202"/>
+                        <Button Content="Räume" Margin="10,10,5,5" Height="48" FontSize="12" BorderBrush="#FFF9F9F9" Foreground="White" Background="#FF020202"/>
+                        <Button Content="Geräte" Margin="10,10,5,5" Height="48" FontSize="12" BorderBrush="#FFF9F9F9" Foreground="White" Background="#FF020202"/>
+                        <Button Content="Gebäude" Margin="10,10,5,5" Height="48" FontSize="12" BorderBrush="#FFF9F9F9" Foreground="White" Background="#FF020202"/>
+                        <Button Content="Sicherheit" Margin="10,10,5,5" Height="48" FontSize="12" BorderBrush="#FFF9F9F9" Foreground="White" Background="#FF020202"/>
+                        <Button Content="Multimedia" Margin="10,10,5,5" Height="48" FontSize="12" BorderBrush="#FFF9F9F9" Foreground="White" Background="#FF020202"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+                <Border Grid.Row="1" Margin="5,0" BorderThickness="0,1,0,0" BorderBrush="LightGray">
+
+                    <StackPanel >
+
+                        <ItemsControl x:Name="ItemsControl">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Rows="1" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <Image Margin="10,0,0,0" Height="18" Source="Images/Bell New-WF.png"/>
+                            <Image Margin="0,0,0,0" Height="18" Source="Images/Speaker Decrease - 01.png"/>
+                            <Label Content="4" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+                            <Image Margin="0,0,5,0" Height="18" Source="Images/Speaker Increase - 02.png"/>
+                        </ItemsControl>
+
+                        <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                                <Label Content="{Binding CurrentTime}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White"/>
+                                <Label Content="{Binding CurrentDate}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="White"/>
+
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
