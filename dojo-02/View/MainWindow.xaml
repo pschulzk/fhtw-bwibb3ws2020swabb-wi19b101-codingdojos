@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dojo_02"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1200">
     <Grid Background="#FF020202">
@@ -21,6 +22,58 @@
                 <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
             </StackPanel>
         </Border>
+
+        <StackPanel Grid.Row="1">
+            <Label Content="Aktoren" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="18" Foreground="White"/>
+
+            <DataGrid Margin="10" MinHeight="300" ItemsSource="{Binding ActorList}" AutoGenerateColumns="True">
+
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                <Button Content="Hinzufügen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White" Command="{Binding ActuatorAddBtnClickCmd}"/>
+                <Button Content="Löschen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White" Command="{Binding ActuatorDelBtnClickCmd}"/>
+            </StackPanel>
+            <Label Content="Sensoren" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="18" Foreground="White"/>
+
+            <DataGrid Margin="10" MinHeight="300" ItemsSource="{Binding SensorList}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="Id"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Description"/>
+                    <DataGridTextColumn Binding="{Binding Room}" Header="Room"/>
+                    <DataGridTemplateColumn   Header="Mode" Width="90">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Mode}" Height="25"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox SelectedItem="{Binding Mode, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding DataContext.ModeSelectionList, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" Height="25"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding ValueType}" Header="ValueType"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse Height="15" Width="15" Fill="{Binding Mode, Converter={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Value}" Header="Value"/>
+
+                    <DataGridTextColumn Binding="{Binding PosX}" Header="PosX"/>
+                    <DataGridTextColumn Binding="{Binding PosY}" Header="PosY"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                <Button Content="Hinzufügen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White" Command="{Binding SensorAddBtnClickCmd}"/>
+                <Button Content="Löschen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White" Command="{Binding SensorDelBtnCmd}"/>
+            </StackPanel>
+
+        </StackPanel>
 
         <Border Grid.RowSpan="2" Margin="5" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray">
             <Grid>
