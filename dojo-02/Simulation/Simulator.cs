@@ -14,7 +14,7 @@ namespace CodingDojo2.DataSimulation
 {
     public class Simulator<T> where T : IItemBase
     {
-        public readonly ObservableCollection<T> Items;
+        public ObservableCollection<T> Items;
         private static Random rand = new Random(5);
 
         /// <summary>
@@ -31,32 +31,30 @@ namespace CodingDojo2.DataSimulation
 
         private void GenerateDemoData(ObservableCollection<ItemBase> Items)
         {
-            Items = new ObservableCollection<ItemBase>
-            {
-                //Sensors
-                new Switch("0.01", "TA Wohnzimmer", "WZ", 1),
-                new Switch("0.02", "TA Wohnzimmer", "WZ", 2),
-                new Switch("0.03", "TA Badezimmer", "Bad", 3),
-                new DoorContact("0.04", "Haustüre", "Garderobe", 4),
-                new MotionDedector("1.100", "IR Haustüre", "Garderobe", 5),
-                new MotionDedector("1.101", "IR Wohnzimmer", "WZ", 6),
-                new Temperature("0.10", "Temp Badezimmer", "Bad", 7),
-                new Temperature("0.11", "Temp Wohnimmer", "WZ", 8),
-                new Temperature("0.12", "Temp Aussen Nord", "Garten", 9),
-                new TwilightSwitch("0.20", "Dämmerungssensor Nord", "Garten", 10),
-                //Actors
-                new Light("2.00", "Licht Wohnzimmer", "WZ", 100),
-                new Light("2.01", "Licht Aussen", "Garten", 101),
-                new Light("2.02", "Licht Badezimmer", "Bad", 102),
-                new PowerJack("2.03", "Dose Badezimmer", "Bad", 103),
-                new PowerJack("2.04", "Dose Wohnzimmer", "WZ", 104),
-                new PowerJack("2.05", "Dose Wohnzimmer", "WZ", 105)
-            };
+            Items = new ObservableCollection<ItemBase>();
+            //Sensors
+            Items.Add(new Switch("0.01", "TA Wohnzimmer", "WZ", 1));
+            Items.Add(new Switch("0.02", "TA Wohnzimmer", "WZ", 2));
+            Items.Add(new Switch("0.03", "TA Badezimmer", "Bad", 3));
+            Items.Add(new DoorContact("0.04", "Haustüre", "Garderobe", 4));
+            Items.Add(new MotionDedector("1.100", "IR Haustüre", "Garderobe", 5));
+            Items.Add(new MotionDedector("1.101", "IR Wohnzimmer", "WZ", 6));
+            Items.Add(new Temperature("0.10", "Temp Badezimmer", "Bad", 7));
+            Items.Add(new Temperature("0.11", "Temp Wohnimmer", "WZ", 8));
+            Items.Add(new Temperature("0.12", "Temp Aussen Nord", "Garten", 9));
+            Items.Add(new TwilightSwitch("0.20", "Dämmerungssensor Nord", "Garten", 10));
+            //Actors
+            Items.Add(new Light("2.00", "Licht Wohnzimmer", "WZ", 100));
+            Items.Add(new Light("2.01", "Licht Aussen", "Garten", 101));
+            Items.Add(new Light("2.02", "Licht Badezimmer", "Bad", 102));
+            Items.Add(new PowerJack("2.03", "Dose Badezimmer", "Bad", 103));
+            Items.Add(new PowerJack("2.04", "Dose Wohnzimmer", "WZ", 104));
+            Items.Add(new PowerJack("2.05", "Dose Wohnzimmer", "WZ", 105));
         }
 
         private void StartGeneratingDemoData(object o)
         {
-            while (true)
+            while (Items != null)
             {
                 try
                 {

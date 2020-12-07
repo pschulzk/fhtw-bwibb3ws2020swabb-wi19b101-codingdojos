@@ -15,8 +15,8 @@ namespace dojo_02.ViewModel
 {
     class MainViewModel : BaseViewModel
     {
-        private readonly Simulator<ItemVm> sim;
-        private readonly List<ItemVm> modelItems = new List<ItemVm>();
+        private Simulator<ItemVm> sim;
+        private readonly ObservableCollection<ItemVm> modelItems = new ObservableCollection<ItemVm>();
         public ObservableCollection<ItemVm> SensorList { get; set; }
         public ObservableCollection<ItemVm> ActorList { get; set; }
         public RelayCommand SensorAddBtnClickCmd { get; set; }
@@ -47,6 +47,8 @@ namespace dojo_02.ViewModel
 
             }
 
+            LoadData();
+
             _now = DateTime.Now.ToString("t");
             DispatcherTimer timer = new DispatcherTimer
             {
@@ -73,15 +75,18 @@ namespace dojo_02.ViewModel
 
         private void LoadData()
         {
-            ObservableCollection<ItemVm> _modelItems = new ObservableCollection<ItemVm>(modelItems);
-            Simulator<ItemVm> sim = new Simulator<ItemVm>(_modelItems);
-            foreach (var item in sim.Items)
+            sim = new Simulator<ItemVm>(modelItems);
+            while (sim.Items != null)
             {
-                if (item.ItemType.Equals(typeof(ISensor)))
-                    SensorList.Add(item);
-                else if (item.ItemType.Equals(typeof(IActuator)))
-                    ActorList.Add(item);
+                foreach (var item in sim.Items)
+                {
+                    if (item.ItemType.Equals(typeof(ISensor)))
+                        SensorList.Add(item);
+                    else if (item.ItemType.Equals(typeof(IActuator)))
+                        ActorList.Add(item);
+                }
             }
+
 
         }
 
