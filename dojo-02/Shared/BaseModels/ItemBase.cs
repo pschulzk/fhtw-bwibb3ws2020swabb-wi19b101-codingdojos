@@ -1,14 +1,6 @@
-﻿using dojo_02.Shared.Interfaces;
-using Dojo3Help.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Shared.BaseModels
+﻿namespace Shared.BaseModels
 {
-    public abstract class ItemBase : BaseViewModel, IItemBase
+    public abstract class ItemBase
     {
         public int Id { get; protected set; }
         public string Name { get; set; }

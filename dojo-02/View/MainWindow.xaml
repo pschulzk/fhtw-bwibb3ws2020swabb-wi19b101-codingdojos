@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dojo_02"
+        xmlns:converters="clr-namespace:dojo_02.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="1200">
+    
     <Grid Background="#FF020202">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -57,7 +59,7 @@
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Ellipse Height="15" Width="15" Fill="{Binding Mode, Converter={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"/>
+                                <Ellipse Height="15" Width="15" Fill="{Binding Mode}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

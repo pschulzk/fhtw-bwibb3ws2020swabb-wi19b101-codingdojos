@@ -1,11 +1,9 @@
-﻿using CodingDojo2.DataSimulation;
-using CodingDojo2.ViewModel;
-using Dojo3Help.ViewModel;
+﻿using CodingDojo2.ViewModel;
+using dojo_02.Converters;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using Shared.BaseModels;
 using Shared.Interfaces;
-using Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,17 +14,15 @@ namespace dojo_02.ViewModel
 {
     class MainViewModel : BaseViewModel
     {
-        public BrushConverter con = new BrushConverter();
-        private Simulator<ItemVm> sim;
-        private readonly ObservableCollection<ItemVm> modelItems = new ObservableCollection<ItemVm>();
+        public IntTobrushConverter con = new IntTobrushConverter();
+        private Simulator sim;
+        private readonly List<ItemVm> modelItems = new List<ItemVm>();
         public ObservableCollection<ItemVm> SensorList { get; set; }
         public ObservableCollection<ItemVm> ActorList { get; set; }
         public RelayCommand SensorAddBtnClickCmd { get; set; }
         public RelayCommand SensorDelBtnCmd { get; set; }
         public RelayCommand ActuatorAddBtnClickCmd { get; set; }
         public RelayCommand ActuatorDelBtnClickCmd { get; set; }
-        private readonly string currentTime = DateTime.Now.ToLocalTime().ToShortTimeString();
-        private readonly string currentDate = DateTime.Now.ToLocalTime().ToShortDateString();
 
         public ObservableCollection<string> ModeSelectionList { get; private set; }
 
@@ -54,7 +50,7 @@ namespace dojo_02.ViewModel
             _now = DateTime.Now.ToString("t");
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromMilliseconds(500)
+                Interval = TimeSpan.FromMilliseconds(1000)
             };
             timer.Tick += new EventHandler(TimerTick);
             timer.Start();
@@ -77,9 +73,9 @@ namespace dojo_02.ViewModel
 
         private void LoadData()
         {
-            sim = new Simulator<ItemVm>(modelItems);
-            while (sim.Items != null)
-            {
+            sim = new Simulator(modelItems);
+            //while (sim.Items != null)
+            //{
                 foreach (var item in sim.Items)
                 {
                     if (item.ItemType.Equals(typeof(ISensor)))
@@ -87,7 +83,7 @@ namespace dojo_02.ViewModel
                     else if (item.ItemType.Equals(typeof(IActuator)))
                         ActorList.Add(item);
                 }
-            }
+            //}
 
 
         }

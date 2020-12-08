@@ -1,6 +1,4 @@
-﻿using dojo_02.Shared.Interfaces;
-using Dojo3Help.ViewModel;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 using Shared.BaseModels;
 using Shared.Interfaces;
 using Shared.Models;
@@ -8,60 +6,41 @@ using System;
 
 namespace CodingDojo2.ViewModel
 {
-    public class ItemVm : ItemBase
+    public class ItemVm : ViewModelBase
     {
         private ItemBase baseItem;
 
-        public ItemVm(string name, string description, string room, int id) : base(name, description, room, id)
-        {
-            Description = description;
-            Name = name;
-            Room = room;
-        }
 
-        public ItemVm(ISensor sensor, string name = null, string description = null, string room = null, int id = 0) : base(name, description, room, id)
-        {
-            baseItem = sensor as ItemBase;
-        }
-
-        public ItemVm(IActuator actuator, string name = null, string description = null, string room = null, int id = 0) : base(name, description, room, id)
-        {
-            baseItem = actuator as ItemBase;
-        }
-
-
-
-
-        public new int Id
+        public int Id
         {
             get { return baseItem.Id; }
         }
 
-        public new string Description
+        public string Description
         {
             get { return baseItem.Description; }
             set { baseItem.Description = value; RaisePropertyChanged(); }
         }
 
-        public new string Name
+        public string Name
         {
             get { return baseItem.Name; }
             set { baseItem.Name = value; RaisePropertyChanged(); }
         }
 
-        public new string Room
+        public string Room
         {
             get { return baseItem.Room; }
             set { baseItem.Room = value; RaisePropertyChanged(); }
         }
 
-        public new int PosX
+        public int PosX
         {
             get { return baseItem.PosX; }
             set { baseItem.PosX = value; RaisePropertyChanged(); }
         }
 
-        public new int PosY
+        public int PosY
         {
             get { return baseItem.PosY; }
             set { baseItem.PosY = value; RaisePropertyChanged(); }
@@ -136,5 +115,15 @@ namespace CodingDojo2.ViewModel
         }
 
 
+
+        public ItemVm(ISensor sensor)
+        {
+            baseItem = sensor as ItemBase;
+        }
+
+        public ItemVm(IActuator actuator)
+        {
+            baseItem = actuator as ItemBase;
+        }
     }
 }

@@ -78,11 +78,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converters\IntTobrushConverter.cs" />
     <Compile Include="Shared\BaseModels\ItemBase.cs" />
     <Compile Include="Shared\BaseModels\ModeType.cs" />
     <Compile Include="Shared\BaseModels\SensorModeType.cs" />
     <Compile Include="Shared\Interfaces\IActuator.cs" />
-    <Compile Include="Shared\Interfaces\IItemBase.cs" />
     <Compile Include="Shared\Interfaces\ISensor.cs" />
     <Compile Include="Shared\Models\BaseActuator.cs" />
     <Compile Include="Shared\Models\BaseSensor.cs" />

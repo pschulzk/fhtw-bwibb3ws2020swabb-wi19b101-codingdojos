@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dojo3Help.ViewModel
+namespace dojo_02.ViewModel
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
