@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dojo-01", "dojo-01\dojo-01.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dojo-02", "dojo-02\dojo-02.csproj", "{D1355E9F-570A-4AE5-AAEA-74639D9A52CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercise-03", "exercise-03\exercise-03.csproj", "{F69E27A7-03BE-4C13-BCB1-8F9261D32267}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -21,6 +23,10 @@ Global
 		{D1355E9F-570A-4AE5-AAEA-74639D9A52CE}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{D1355E9F-570A-4AE5-AAEA-74639D9A52CE}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{D1355E9F-570A-4AE5-AAEA-74639D9A52CE}.Release|anycpu.Build.0 = Release|Any CPU
+		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
