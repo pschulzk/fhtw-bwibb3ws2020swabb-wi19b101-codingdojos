@@ -42,6 +42,9 @@ namespace ExerciseSimpleMultiVM.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
+            SimpleIoc.Default.Register<OverviewVm>(true);
+            SimpleIoc.Default.Register<DetailVm>(true);
+            SimpleIoc.Default.Register<AddVm>(true); //register the Viewmodel in the locator use true to generate instance instantly 
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
@@ -52,7 +55,29 @@ namespace ExerciseSimpleMultiVM.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
+        public DetailVm DetailVm
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DetailVm>();
+            }
+        }
+        public OverviewVm OverviewVm
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<OverviewVm>();
+            }
+        }
+        public AddVm AddVm
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddVm>();
+            }
+        }
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

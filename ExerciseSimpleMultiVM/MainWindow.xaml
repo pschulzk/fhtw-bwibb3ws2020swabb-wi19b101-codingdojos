@@ -1,12 +1,39 @@
-﻿<Window x:Class="ExerciseSimpleMultiVM.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ExerciseSimpleMultiVM"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="ExerciseSimpleMultiVM.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:ExerciseSimpleMultiVM.Views"
+    xmlns:vm="clr-namespace:ExerciseSimpleMultiVM.ViewModel"
+    xmlns:converters="clr-namespace:ExerciseSimpleMultiVM.Converters"
+    xmlns:local="clr-namespace:ExerciseSimpleMultiVM"
+    mc:Ignorable="d"
+    DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
+    Title="MainWindow" Height="450" Width="800"
+>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10">
+            <Button Margin="10" Content="New Data" Command="{Binding ChangeDetailView}" CommandParameter="NewData"/>
+            <Button Margin="10" Content="Overview"  Command="{Binding ChangeDetailView}" CommandParameter="Overview"/>
+            <Button Margin="10" Content="Details"  Command="{Binding ChangeDetailView}" CommandParameter="Detail"/>
+        </StackPanel>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentDetailView}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type vm:DetailVm}">
+                    <views:ListDetails/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:OverviewVm}">
+                    <views:ListIOverview/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:AddVm}">
+                    <views:Add/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 </Window>
