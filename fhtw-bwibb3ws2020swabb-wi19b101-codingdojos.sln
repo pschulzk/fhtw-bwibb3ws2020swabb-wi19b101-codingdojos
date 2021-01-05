@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercise-03", "exercise-03\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercise-04", "exercise-04\exercise-04.csproj", "{44BE1CF3-B11D-45B8-B16F-325D22D05507}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExerciseSimpleMultiVM", "ExerciseSimpleMultiVM\ExerciseSimpleMultiVM.csproj", "{8A03CD8B-FCE3-400C-8440-713D88906858}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -33,12 +35,16 @@ Global
 		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Release|anycpu.Build.0 = Release|Any CPU
+		{8A03CD8B-FCE3-400C-8440-713D88906858}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{8A03CD8B-FCE3-400C-8440-713D88906858}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{8A03CD8B-FCE3-400C-8440-713D88906858}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{8A03CD8B-FCE3-400C-8440-713D88906858}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
