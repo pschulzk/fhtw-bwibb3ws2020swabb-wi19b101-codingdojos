@@ -1,4 +1,7 @@
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
+using System.Collections.ObjectModel;
+using System;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace exercise_04.ViewModel
 {
@@ -16,19 +19,38 @@ namespace exercise_04.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        private AnimalVm selectedData;
+        public ObservableCollection<AnimalVm> Data { get; set; }
+        public ObservableCollection<string> Habitates { get; set; }
+        public RelayCommand DeleteBtnClicked { get; set; }
+
+        public AnimalVm SelectedData
+        {
+            get { return selectedData; }
+            set { selectedData = value; RaisePropertyChanged(); }
+        }
+
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            Data = new ObservableCollection<AnimalVm>();
+            Habitates = new ObservableCollection<string>();
+            LoadData();
+            DeleteBtnClicked = new RelayCommand(() => { Data.Remove(SelectedData); }, () => { return SelectedData != null; });
+        }
+
+        private void LoadData()
+        {
+            Habitates.Add("Dschungel");
+            Habitates.Add("Süßwasser");
+            Habitates.Add("Steppe");
+            Habitates.Add("Luft");
+
+            Data.Add(new AnimalVm("Tiger", 10, "Raubkatze", "Dschungel", true, 6000));
+            Data.Add(new AnimalVm("Goldbrasse", 4, "Fisch", "Süßwasser", false, 100000));
+            Data.Add(new AnimalVm("Coala", 20, "Beuteltier", "Steppe", false, 500));
+            Data.Add(new AnimalVm("Eisvogel", 1, "Vogel", "Luft", true, 50));
+
+
         }
     }
 }
