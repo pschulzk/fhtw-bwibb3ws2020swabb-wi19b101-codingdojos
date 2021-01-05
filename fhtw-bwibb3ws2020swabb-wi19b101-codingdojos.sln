@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dojo-02", "dojo-02\dojo-02.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercise-03", "exercise-03\exercise-03.csproj", "{F69E27A7-03BE-4C13-BCB1-8F9261D32267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercise-04", "exercise-04\exercise-04.csproj", "{44BE1CF3-B11D-45B8-B16F-325D22D05507}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -27,11 +29,16 @@ Global
 		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{F69E27A7-03BE-4C13-BCB1-8F9261D32267}.Release|anycpu.Build.0 = Release|Any CPU
+		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{44BE1CF3-B11D-45B8-B16F-325D22D05507}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
 	EndGlobalSection
 EndGlobal
