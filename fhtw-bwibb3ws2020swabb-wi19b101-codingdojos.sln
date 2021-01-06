@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exercise-04", "exercise-04\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExerciseSimpleMultiVM", "ExerciseSimpleMultiVM\ExerciseSimpleMultiVM.csproj", "{8A03CD8B-FCE3-400C-8440-713D88906858}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleClient", "SimpleClient\SimpleClient.csproj", "{1B0EC037-CC83-4831-A67F-032136394F47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruckExampleVZ", "TruckExampleVZ\TruckExampleVZ.csproj", "{BDC42A51-260D-4B94-9F40-394E84F6761E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -39,12 +43,20 @@ Global
 		{8A03CD8B-FCE3-400C-8440-713D88906858}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{8A03CD8B-FCE3-400C-8440-713D88906858}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{8A03CD8B-FCE3-400C-8440-713D88906858}.Release|anycpu.Build.0 = Release|Any CPU
+		{1B0EC037-CC83-4831-A67F-032136394F47}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{1B0EC037-CC83-4831-A67F-032136394F47}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{1B0EC037-CC83-4831-A67F-032136394F47}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{1B0EC037-CC83-4831-A67F-032136394F47}.Release|anycpu.Build.0 = Release|Any CPU
+		{BDC42A51-260D-4B94-9F40-394E84F6761E}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{BDC42A51-260D-4B94-9F40-394E84F6761E}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{BDC42A51-260D-4B94-9F40-394E84F6761E}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{BDC42A51-260D-4B94-9F40-394E84F6761E}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
+		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
 	EndGlobalSection
 EndGlobal
