@@ -19,8 +19,8 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
@@ -34,9 +34,9 @@
         <TextBox Grid.Column="1" Grid.Row="2" Margin="5" HorizontalAlignment="Left" Width="100"  Text="{Binding Person.SSN}"/>
         <Label Grid.Row="3" Margin="2" HorizontalAlignment="Right" Content="Description"/>
         <TextBox Grid.Column="1" Grid.Row="3" Margin="5" HorizontalAlignment="Left" Width="100"  Text="{Binding Person.Description}"/>
-        <Label Grid.Row="4" Margin="2" HorizontalAlignment="Right" Content="Image Url"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Margin="5" HorizontalAlignment="Left" Width="100" Text="{Binding Person.Image, Converter={StaticResource ImageToStringConverter}}"/>
+        <Label Grid.Row="4" Margin="2" HorizontalAlignment="Right" Content="Selected image"/>
+        <Image Grid.Column="1" Grid.Row="4" Margin="5" HorizontalAlignment="Left" Width="25" Source="{Binding Person.Image.UriSource}"/>
         <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Margin="0,5,10,5" Content="Choose" Height="21" Width="50" Command="{Binding BtnSelectFileClick}"/>
-        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Content="Save" Height="25" Width="100" Command="{Binding AddBtnClicked}"/>
+        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Bottom" Content="Save" Height="25" Width="100" Command="{Binding AddBtnClicked}"/>
     </Grid>
 </UserControl>

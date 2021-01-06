@@ -33,6 +33,7 @@ namespace ExerciseSimpleMultiVM.ViewModel
                 msg.Send<GenericMessage<PersonVm>>(new GenericMessage<PersonVm>(Person.Clone()));
             },
             () => { return Person.Lastname.Length > 4; });
+
             BtnSelectFileClick = new RelayCommand(() => OpenFileChooser());
         }
 
@@ -43,7 +44,13 @@ namespace ExerciseSimpleMultiVM.ViewModel
             {
                 string uri = openFileDialog.FileName;
                 System.Diagnostics.Debug.WriteLine("AddVm -> OpenFileChooser.uri: " + uri);
-                Person.Image = new BitmapImage(new Uri(uri));
+                // Person.Image = new BitmapImage(new Uri(uri));
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(uri);
+                bitmap.EndInit();
+                Person.Image = bitmap;
+                RaisePropertyChanged();
             }
         }
     }
