@@ -47,8 +47,16 @@ namespace ExerciseSimpleMultiVM.ViewModel
             msg.Register<GenericMessage<PersonVm>>(this, Received);
             //REgister on Messenger to handle deletion 
             msg.Register<NotificationMessage<PersonVm>>(this, EntryDeleted);
+            //Register on Messenger change view
+            msg.Register<GenericMessage<string>>(this, SwitchViewTrigger);
         }
 
+
+        private void SwitchViewTrigger(GenericMessage<string> obj)
+        {
+            System.Diagnostics.Debug.WriteLine("MainViewModel -> SwitchViewTrigger.obj.Content: " + obj.Content);
+            SwitchView(obj.Content);
+        }
 
 
         private void SwitchView(string obj)

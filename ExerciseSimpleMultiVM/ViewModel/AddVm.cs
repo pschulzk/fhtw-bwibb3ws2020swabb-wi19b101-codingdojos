@@ -31,6 +31,7 @@ namespace ExerciseSimpleMultiVM.ViewModel
                 //clone the Person object and send it to mainVM
                 //different Messagetypes are available, see ObjectBrowser of Galasoft.MvvmLight dll
                 msg.Send<GenericMessage<PersonVm>>(new GenericMessage<PersonVm>(Person.Clone()));
+                msg.Send<GenericMessage<string>>(new GenericMessage<string>("Overview"));
             },
             () => { return Person.Lastname.Length > 4; });
 
@@ -44,7 +45,6 @@ namespace ExerciseSimpleMultiVM.ViewModel
             {
                 string uri = openFileDialog.FileName;
                 System.Diagnostics.Debug.WriteLine("AddVm -> OpenFileChooser.uri: " + uri);
-                // Person.Image = new BitmapImage(new Uri(uri));
                 BitmapImage bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(uri);
