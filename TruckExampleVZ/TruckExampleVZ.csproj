@@ -70,7 +70,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\CityToBrushConverter.cs" />
+    <Compile Include="Delegates\GuiUpdate.cs" />
+    <Compile Include="Helpers\MessageConverter.cs" />
+    <Compile Include="ServerCommunication\ClientHandler.cs" />
+    <Compile Include="ServerCommunication\Server.cs" />
+    <Compile Include="ViewModel\LoadVm.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\TruckVm.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -112,5 +119,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

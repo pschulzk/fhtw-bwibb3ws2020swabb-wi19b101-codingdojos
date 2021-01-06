@@ -1,4 +1,10 @@
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using System;
+using System.Collections.ObjectModel;
+using System.Windows.Threading;
+using TruckExampleVZ.Helpers;
+using TruckExampleVZ.ServerCommunication;
 
 namespace TruckExampleVZ.ViewModel
 {
@@ -16,19 +22,108 @@ namespace TruckExampleVZ.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
+        private TruckVm selectedTruck;
+        private ObservableCollection<TruckVm> trucks;
+        private ObservableCollection<LoadVm> selectedLoads;
+        private readonly Server server;
+        public ObservableCollection<TruckVm> Trucks
+        {
+            get { return trucks; }
+
+            set { trucks = value; }
+        }
+        public ObservableCollection<LoadVm> SelectedLoads
+        {
+            get { return selectedLoads; }
+            set { selectedLoads = value; RaisePropertyChanged(); }
+        }
+        public RelayCommand SelectBtnClicked { get; set; }
+        public RelayCommand UnloadBtnClicked { get; set; }
+        public TruckVm SelectedTruck
+        {
+            get => selectedTruck;
+            set
+            {
+                selectedTruck = value;
+                RaisePropertyChanged();
+                SelectedLoads = null;
+            }
+        }
+
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+#if DEBUG
+            Console.WriteLine("the message");
+#endif
+
+            System.Diagnostics.Debug.WriteLine("!!! MainViewModel.IsInDesignMode: " + IsInDesignMode.ToString());
+            // Thead nummer anzeigen
+            var tid3 = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
+            Trucks = new ObservableCollection<TruckVm>();
+            SelectedLoads = new ObservableCollection<LoadVm>();
+            SelectBtnClicked = new RelayCommand(new Action(ShowLoadBtnClicked), IsShowLoadBtnClickedEnabled);
+            //SelectBtnClicked = new RelayCommand(ShowLoadBtnClicked); //shortcut
+            UnloadBtnClicked = new RelayCommand(() => { Trucks.Remove(SelectedTruck); }, () => { return SelectedTruck != null; });
+
+            if (IsInDesignMode)
+            {
+                GenerateDemoData();
+            }
+            else
+            {
+                server = new Server(GuiUpdateReceived);
+            }
         }
+
+        private void GuiUpdateReceived(string s)
+        {
+            //ID@Abfahrtsort@Ladungsbez@Menge@Gewicht
+            MessageConverter conv = new MessageConverter(s);
+            //Thread Nummer von ClientHandler
+            var tid = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                Trucks.Add(conv.Convert());
+                //Thread von "Gui"-Thread
+                var tid2 = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
+
+            });
+
+        }
+
+        private bool IsShowLoadBtnClickedEnabled()
+        {
+            return SelectedTruck != null;
+        }
+
+        private void ShowLoadBtnClicked()
+        {
+            SelectedLoads = SelectedTruck.Loads;
+        }
+
+        private void GenerateDemoData()
+        {
+            Trucks.Add(new TruckVm()
+            {
+                Id = "SL-123AB",
+                Source = "Salzburg",
+                Loads = new ObservableCollection<LoadVm>() {
+                    new LoadVm(){ Description = "Mozartkugel", Amount = 1000, Weight = 300 },
+                    new LoadVm(){ Description = "Mettenwürste", Amount = 500, Weight = 150 }
+                }
+            });
+
+            Trucks.Add(new TruckVm()
+            {
+                Id = "SL-123AB",
+                Source = "Graz",
+                Loads = new ObservableCollection<LoadVm>() {
+                    new LoadVm(){ Description = "Wein", Amount = 1000, Weight = 1000 },
+                    new LoadVm(){ Description = "Äpfel", Amount = 500, Weight = 300 }
+                }
+            });
+
+        }
+
     }
 }
