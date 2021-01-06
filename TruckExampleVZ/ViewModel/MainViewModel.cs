@@ -52,10 +52,6 @@ namespace TruckExampleVZ.ViewModel
 
         public MainViewModel()
         {
-#if DEBUG
-            Console.WriteLine("the message");
-#endif
-
             System.Diagnostics.Debug.WriteLine("!!! MainViewModel.IsInDesignMode: " + IsInDesignMode.ToString());
             // Thead nummer anzeigen
             var tid3 = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
@@ -63,7 +59,10 @@ namespace TruckExampleVZ.ViewModel
             SelectedLoads = new ObservableCollection<LoadVm>();
             SelectBtnClicked = new RelayCommand(new Action(ShowLoadBtnClicked), IsShowLoadBtnClickedEnabled);
             //SelectBtnClicked = new RelayCommand(ShowLoadBtnClicked); //shortcut
-            UnloadBtnClicked = new RelayCommand(() => { Trucks.Remove(SelectedTruck); }, () => { return SelectedTruck != null; });
+            UnloadBtnClicked = new RelayCommand(
+                () => Trucks.Remove(SelectedTruck),
+                () => SelectedTruck != null
+            );
 
             if (IsInDesignMode)
             {
@@ -77,6 +76,7 @@ namespace TruckExampleVZ.ViewModel
 
         private void GuiUpdateReceived(string s)
         {
+            System.Diagnostics.Debug.WriteLine("!!! MainViewModel.GuiUpdateReceived.param: " + s);
             //ID@Abfahrtsort@Ladungsbez@Menge@Gewicht
             MessageConverter conv = new MessageConverter(s);
             //Thread Nummer von ClientHandler
@@ -86,6 +86,8 @@ namespace TruckExampleVZ.ViewModel
                 Trucks.Add(conv.Convert());
                 //Thread von "Gui"-Thread
                 var tid2 = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
+
+                Console.Write("!!! MainViewModel.GuiUpdateReceived.App.Current.Dispatcher.Invoke: " + s + " !!! with ThreadID: " + tid2.ToString());
 
             });
 

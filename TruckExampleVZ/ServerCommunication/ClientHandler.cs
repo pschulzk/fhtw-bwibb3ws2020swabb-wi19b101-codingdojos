@@ -1,5 +1,7 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using TruckExampleVZ.Delegates;
 
 namespace TruckExampleVZ.ServerCommunication
@@ -14,6 +16,7 @@ namespace TruckExampleVZ.ServerCommunication
         {
             this.socket = socket;
             Informer = informer;
+            Task.Factory.StartNew(Receive);
         }
 
         private void Receive()
@@ -22,7 +25,11 @@ namespace TruckExampleVZ.ServerCommunication
             {
                 int length;
                 length = socket.Receive(buffer);
-                Informer(Encoding.UTF8.GetString(buffer, 0, length));
+                string message = Encoding.UTF8.GetString(buffer, 0, length);
+                System.Diagnostics.Debug.WriteLine("!!! ClientHandler.Receive.bufferContent: " + message);
+
+                Informer(message);
+                message = "";
             }
         }
     }

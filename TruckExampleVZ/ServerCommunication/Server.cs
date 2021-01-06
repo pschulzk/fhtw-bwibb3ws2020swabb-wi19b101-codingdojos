@@ -29,6 +29,7 @@ namespace TruckExampleVZ.ServerCommunication
         {
             while (true)
             {
+                System.Diagnostics.Debug.WriteLine("!!! Server.AcceptClients !!!");
                 clients.Add(new ClientHandler(tcpServer.AcceptSocket(), Informer));
             }
         }
