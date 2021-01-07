@@ -26,7 +26,7 @@ namespace TruckExampleVZ.ServerCommunication
                 int length;
                 length = socket.Receive(buffer);
                 string message = Encoding.UTF8.GetString(buffer, 0, length);
-                System.Diagnostics.Debug.WriteLine("!!! ClientHandler.Receive.bufferContent: " + message);
+                System.Diagnostics.Debug.WriteLine("!!! ClientHandler.Receive.message: " + message);
 
                 Informer(message);
                 message = "";

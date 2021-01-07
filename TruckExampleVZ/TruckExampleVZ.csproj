@@ -72,6 +72,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\CityToBrushConverter.cs" />
     <Compile Include="Delegates\GuiUpdate.cs" />
+    <Compile Include="Helpers\CustomLogger.cs" />
     <Compile Include="Helpers\MessageConverter.cs" />
     <Compile Include="ServerCommunication\ClientHandler.cs" />
     <Compile Include="ServerCommunication\Server.cs" />

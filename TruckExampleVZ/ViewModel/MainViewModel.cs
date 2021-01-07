@@ -50,9 +50,10 @@ namespace TruckExampleVZ.ViewModel
             }
         }
 
+        private readonly CustomLogger logger;
+
         public MainViewModel()
         {
-            System.Diagnostics.Debug.WriteLine("!!! MainViewModel.IsInDesignMode: " + IsInDesignMode.ToString());
             // Thead nummer anzeigen
             var tid3 = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
             Trucks = new ObservableCollection<TruckVm>();
@@ -72,12 +73,20 @@ namespace TruckExampleVZ.ViewModel
             {
                 server = new Server(GuiUpdateReceived);
             }
+
+            logger = new CustomLogger();
+            logger.WriteLog("!!! MainViewModel.IsInDesignMode: " + IsInDesignMode.ToString());
         }
 
         private void GuiUpdateReceived(string s)
         {
-            System.Diagnostics.Debug.WriteLine("!!! MainViewModel.GuiUpdateReceived.param: " + s);
+            logger.WriteLog("!!! MainViewModel.GuiUpdateReceived.param: " + s);
             //ID@Abfahrtsort@Ladungsbez@Menge@Gewicht
+            if (!s.Contains("@"))
+            {
+                logger.WriteLog("!!! ERROR: Received message is malformed. Message: " + s);
+                return;
+            }
             MessageConverter conv = new MessageConverter(s);
             //Thread Nummer von ClientHandler
             var tid = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
@@ -87,7 +96,7 @@ namespace TruckExampleVZ.ViewModel
                 //Thread von "Gui"-Thread
                 var tid2 = Dispatcher.CurrentDispatcher.Thread.ManagedThreadId;
 
-                Console.Write("!!! MainViewModel.GuiUpdateReceived.App.Current.Dispatcher.Invoke: " + s + " !!! with ThreadID: " + tid2.ToString());
+                logger.WriteLog("!!! MainViewModel.GuiUpdateReceived.App.Current.Dispatcher.Invoke: " + s + " !!! with ThreadID: " + tid2.ToString());
 
             });
 
