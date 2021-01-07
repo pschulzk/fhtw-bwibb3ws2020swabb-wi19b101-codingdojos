@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruckExampleVZ", "TruckExam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAsyncChatServer", "SimpleAsyncChatServer\SimpleAsyncChatServer.csproj", "{3BBB0D95-D03F-4767-A02E-61CA37FB7855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoStock", "CryptoStock\CryptoStock.csproj", "{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -57,12 +59,16 @@ Global
 		{3BBB0D95-D03F-4767-A02E-61CA37FB7855}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{3BBB0D95-D03F-4767-A02E-61CA37FB7855}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{3BBB0D95-D03F-4767-A02E-61CA37FB7855}.Release|anycpu.Build.0 = Release|Any CPU
+		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
+		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
 	EndGlobalSection
 EndGlobal

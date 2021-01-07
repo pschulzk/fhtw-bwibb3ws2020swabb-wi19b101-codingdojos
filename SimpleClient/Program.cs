@@ -46,12 +46,12 @@ namespace SimpleClient
                     client.Close();
                     Console.WriteLine("############# Disconnected from server #############");
                     // Console.ReadKey();
+                    Console.WriteLine("############# Quitting server gracefully #############");
+                    Environment.Exit(0);
                     break;
                 }
             }
 
-            Console.WriteLine("############# Quitting server gracefully #############");
-            Environment.Exit(0);
         }
     }
 }
