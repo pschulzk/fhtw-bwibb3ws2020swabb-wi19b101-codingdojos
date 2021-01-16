@@ -126,25 +126,32 @@ namespace ExamBB05App.ViewModel
                     // Die Epfangenen Daten in die Einzelteile zerlegen:
                     string[] split = message.Split('@');
 
-                    int newWarenkorbId = Int32.Parse(split[0]);
+                    // System.Diagnostics.Debug.WriteLine("!!! newWarenkorbId: " + split[1]);
+                    int newWarenkorbId = Int32.Parse(split[1].Substring(0, 4));
                     System.Diagnostics.Debug.WriteLine("!!! newWarenkorbId: " + newWarenkorbId.ToString());
 
-                    int produkt1Id = Int32.Parse(split[1].Substring(0, 1));
+                    // System.Diagnostics.Debug.WriteLine("!!! produkt1Id: " + split[2]);
+                    int produkt1Id = Int32.Parse(split[2].Substring(0, 4));
                     System.Diagnostics.Debug.WriteLine("!!! produkt1Id: " + produkt1Id.ToString());
 
-                    int produkt1Amount = Int32.Parse(split[2].Substring(0, 1));
+                    // System.Diagnostics.Debug.WriteLine("!!! produkt1Amount: " + split[3]);
+                    int produkt1Amount = Int32.Parse(split[3].Substring(0, 1));
                     System.Diagnostics.Debug.WriteLine("!!! produkt1Amount: " + produkt1Amount.ToString());
 
-                    float produkt1Price = float.Parse(split[3].Substring(0, 4), CultureInfo.InvariantCulture);
+                    // System.Diagnostics.Debug.WriteLine("!!! produkt1Price: " + split[4]);
+                    float produkt1Price = float.Parse(split[4].Substring(0, 4), CultureInfo.InvariantCulture);
                     System.Diagnostics.Debug.WriteLine("!!! produkt1Price: " + produkt1Price.ToString());
 
-                    int produkt2Id = Int32.Parse(split[4].Substring(0, 1));
+                    // System.Diagnostics.Debug.WriteLine("!!! produkt2Id: " + split[5]);
+                    int produkt2Id = Int32.Parse(split[5].Substring(0, 4));
                     System.Diagnostics.Debug.WriteLine("!!! produkt2Id: " + produkt2Id.ToString());
 
-                    int produkt2Amount = Int32.Parse(split[5].Substring(0, 1));
+                    // System.Diagnostics.Debug.WriteLine("!!! produkt2Amount: " + split[6]);
+                    int produkt2Amount = Int32.Parse(split[6].Substring(0, 1));
                     System.Diagnostics.Debug.WriteLine("!!! produkt2Amount: " + produkt2Amount.ToString());
 
-                    float produkt2Price = float.Parse(split[6].Substring(0, 4), CultureInfo.InvariantCulture);
+                    // System.Diagnostics.Debug.WriteLine("!!! produkt2Price: " + split[7]);
+                    float produkt2Price = float.Parse(split[7].Substring(0, 4), CultureInfo.InvariantCulture);
                     System.Diagnostics.Debug.WriteLine("!!! produkt2Price: " + produkt2Price.ToString());
 
 
@@ -152,7 +159,9 @@ namespace ExamBB05App.ViewModel
                     newWarenKorb.Produkte.Add(new Produkt( produkt1Id, produkt1Amount, produkt1Price ));
                     newWarenKorb.Produkte.Add(new Produkt(produkt2Id, produkt2Amount, produkt2Price));
 
+                    Warenkoerbe.Add(newWarenKorb);
                     RaisePropertyChanged("Warenkoerbe");
+                    UpdateProps();
 
                 });
         }
