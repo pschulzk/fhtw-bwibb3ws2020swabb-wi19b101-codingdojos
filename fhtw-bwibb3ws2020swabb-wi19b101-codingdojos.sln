@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleAsyncChatServer", "Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoStock", "CryptoStock\CryptoStock.csproj", "{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamBB05Client", "ExamBB05Client\ExamBB05Client.csproj", "{AF14362E-B647-4A2F-8563-549194E025D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamBB05App", "ExamBB05App\ExamBB05App.csproj", "{FE568D55-49CF-4191-9E77-EB709820B117}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|anycpu = Debug|anycpu
@@ -63,12 +67,20 @@ Global
 		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Debug|anycpu.Build.0 = Debug|Any CPU
 		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Release|anycpu.ActiveCfg = Release|Any CPU
 		{316CAF0D-ACCA-4E98-8ABD-2997BE7F8CB4}.Release|anycpu.Build.0 = Release|Any CPU
+		{AF14362E-B647-4A2F-8563-549194E025D5}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{AF14362E-B647-4A2F-8563-549194E025D5}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{AF14362E-B647-4A2F-8563-549194E025D5}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{AF14362E-B647-4A2F-8563-549194E025D5}.Release|anycpu.Build.0 = Release|Any CPU
+		{FE568D55-49CF-4191-9E77-EB709820B117}.Debug|anycpu.ActiveCfg = Debug|Any CPU
+		{FE568D55-49CF-4191-9E77-EB709820B117}.Debug|anycpu.Build.0 = Debug|Any CPU
+		{FE568D55-49CF-4191-9E77-EB709820B117}.Release|anycpu.ActiveCfg = Release|Any CPU
+		{FE568D55-49CF-4191-9E77-EB709820B117}.Release|anycpu.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 		SolutionGuid = {A6CBE881-20C9-4C1C-832D-E0DAE9269EF0}
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
