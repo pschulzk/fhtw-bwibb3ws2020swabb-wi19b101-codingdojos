@@ -40,7 +40,7 @@
                 <DataTemplate>
                     <Border BorderBrush="Blue" BorderThickness="3" CornerRadius="4">
                         <StackPanel Orientation="Vertical">
-                            <ListBox ItemsSource="{Binding Id}" Margin="10"/>
+                            <Label Content="{Binding Id}" />
                             <Button Background="Azure" Margin="5" Content="Löschen" Command="{Binding DataContext.DeleteProdukt, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"/>
                         </StackPanel>
                     </Border>

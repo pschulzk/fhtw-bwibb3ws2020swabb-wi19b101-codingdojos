@@ -20,26 +20,5 @@ namespace ExamBB05App.ViewModel
 
         public ObservableCollection<Produkt> Produkte { get; set; }
 
-        public int SumAmount
-        {
-            get
-            {
-                return Produkte.Count;
-            }
-        }
-
-        public float SumPrice
-        {
-            get
-            {
-                float n = 0;
-                foreach (Produkt produkt in Produkte)
-                {
-                    n += produkt.Price;
-                }
-                return n;
-            }
-        }
-
     }
 }
