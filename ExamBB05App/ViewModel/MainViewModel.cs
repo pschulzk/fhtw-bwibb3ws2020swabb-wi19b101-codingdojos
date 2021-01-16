@@ -1,4 +1,9 @@
+﻿using ExamBB05App.ServerCommunication;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
+using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace ExamBB05App.ViewModel
 {
@@ -16,19 +21,140 @@ namespace ExamBB05App.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+
+        public ObservableCollection<Warenkorb> Warenkoerbe { get; set; }
+
+        private int sumAmountProdukte;
+
+        public int SumAmountProdukte
+        {
+            get { return sumAmountProdukte; }
+            set { sumAmountProdukte = value; }
+        }
+
+        private float sumPriceProdukte;
+
+        public float SumPriceProdukte
+        {
+            get { return sumPriceProdukte; }
+            set { sumPriceProdukte = value; }
+        }
+
+        // In Liste selektierter Warenkörbe-> bei Klick:  Anzeige Details zu den Produkte des Warenkorbs
+        private Warenkorb selectedWarenkorb;
+
+        public Warenkorb SelectedWarenkorb
+        {
+            get { return selectedWarenkorb; }
+            set
+            {
+                selectedWarenkorb = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public RelayCommand<Produkt> DeleteProdukt { get; set; }
+
+        readonly Server serverConnection;
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            if (IsInDesignMode)
+            {
+                   // WTF
+            }
+            else
+            {
+                Warenkoerbe = new ObservableCollection<Warenkorb>();
+
+                // Neues Server Objekt mit Methode die beim Empfang aufzurfen ist: GuiUpdater
+
+                serverConnection = new Server(GuiUpdater);
+
+                DeleteProdukt = new RelayCommand<Produkt>(
+                    (Produkt p) =>
+                    {
+                        foreach (Warenkorb warenkorb in Warenkoerbe)
+                        {
+                            foreach (Produkt produkt in warenkorb.Produkte)
+                            {
+                                if (produkt == p)
+                                {
+                                    warenkorb.Produkte.Remove(produkt);
+                                    break;
+                                }
+                            }
+                        }
+
+                        UpdateProps();
+                    });
+            }
+
+        }
+
+        private void UpdateProps()
+        {
+            SumAmountProdukte = 0;
+
+            SumPriceProdukte = 0;
+
+            foreach (Warenkorb warenkorb in Warenkoerbe)
+            {
+                SumAmountProdukte += warenkorb.Produkte.Count;
+
+                foreach (Produkt produkt in warenkorb.Produkte)
+                {
+                    SumPriceProdukte += produkt.Price;
+                }
+            }
+
+            RaisePropertyChanged("SumAmountProdukte");
+            RaisePropertyChanged("SumPriceProdukte");
+        }
+
+        public void GuiUpdater(string message)
+        {
+            System.Diagnostics.Debug.WriteLine("!!! GuiUpdater MESSAGE: " + message);
+
+            App.Current.Dispatcher.Invoke(
+                () =>
+                {
+
+                    // Die Epfangenen Daten in die Einzelteile zerlegen:
+                    string[] split = message.Split('@');
+
+                    int newWarenkorbId = Int32.Parse(split[0]);
+                    System.Diagnostics.Debug.WriteLine("!!! newWarenkorbId: " + newWarenkorbId.ToString());
+
+                    int produkt1Id = Int32.Parse(split[1].Substring(0, 1));
+                    System.Diagnostics.Debug.WriteLine("!!! produkt1Id: " + produkt1Id.ToString());
+
+                    int produkt1Amount = Int32.Parse(split[2].Substring(0, 1));
+                    System.Diagnostics.Debug.WriteLine("!!! produkt1Amount: " + produkt1Amount.ToString());
+
+                    float produkt1Price = float.Parse(split[3].Substring(0, 4), CultureInfo.InvariantCulture);
+                    System.Diagnostics.Debug.WriteLine("!!! produkt1Price: " + produkt1Price.ToString());
+
+                    int produkt2Id = Int32.Parse(split[4].Substring(0, 1));
+                    System.Diagnostics.Debug.WriteLine("!!! produkt2Id: " + produkt2Id.ToString());
+
+                    int produkt2Amount = Int32.Parse(split[5].Substring(0, 1));
+                    System.Diagnostics.Debug.WriteLine("!!! produkt2Amount: " + produkt2Amount.ToString());
+
+                    float produkt2Price = float.Parse(split[6].Substring(0, 4), CultureInfo.InvariantCulture);
+                    System.Diagnostics.Debug.WriteLine("!!! produkt2Price: " + produkt2Price.ToString());
+
+
+                    Warenkorb newWarenKorb = new Warenkorb(newWarenkorbId);
+                    newWarenKorb.Produkte.Add(new Produkt( produkt1Id, produkt1Amount, produkt1Price ));
+                    newWarenKorb.Produkte.Add(new Produkt(produkt2Id, produkt2Amount, produkt2Price));
+
+                    RaisePropertyChanged("Warenkoerbe");
+
+                });
         }
     }
 }

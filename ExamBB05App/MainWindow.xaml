@@ -5,8 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamBB05App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label VerticalAlignment="Center" Margin="5" Content="Liste der Warenkörbe:"/>
+        <Label VerticalAlignment="Center" Margin="5" Content="Liste der Produkte:" Grid.Column="1"/>
+
+        <ListBox Grid.Row="1" Margin="10" ItemsSource="{Binding Warenkoerbe}" SelectedItem="{Binding SelectedWarenkorb}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Blue" BorderThickness="3" CornerRadius="3">
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle Width="35" Height="20" Margin="5"/>
+                            <Label Content="{Binding Id}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding SelectedWarenkorb.Produkte}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Blue" BorderThickness="3" CornerRadius="4">
+                        <StackPanel Orientation="Vertical">
+                            <ListBox ItemsSource="{Binding Id}" Margin="10"/>
+                            <Button Background="Azure" Margin="5" Content="Löschen" Command="{Binding DataContext.DeleteProdukt, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label  Margin="5" Width="250" Content="Summe aller Produkte: "/>
+                <Label Content="{Binding SumAmountProdukte}" FontSize="15"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="5" Width="250" Content="Geldsumme aller Produkte: "/>
+                <Label Content="{Binding SumPriceProdukte}" FontSize="15"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>

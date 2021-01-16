@@ -16,7 +16,7 @@ namespace ExamBB05Client
 
             // CLientkommunikation anlegen
             TcpClient client = new TcpClient();
-            client.Connect(new IPEndPoint(IPAddress.Loopback, 8081));
+            client.Connect(new IPEndPoint(IPAddress.Loopback, 8888));
             Socket clientSocket = client.Client;
 
             while (true)
@@ -26,10 +26,8 @@ namespace ExamBB05Client
                 int produktNr1 = rand.Next();
                 int produktNr2 = rand.Next();
 
-                int gewicht = int.Parse(Console.ReadLine());
-
-                // { Warenkorb - WarenkorbNr{ Produkt - ProduktNr,2,1.75} { Produkt - ProduktNr,1,8.5} }
-                string message = "{ Warenkorb - " + warenKorbNr + "{ Produkt - " + produktNr1 + ", 2, 1.75 } { Produkt - " + produktNr2 + ", 1, 8.5 } }";
+                // { Warenkorb - @WarenkorbNr{ Produkt - @ProduktNr,2,1.75} { Produkt - @ProduktNr,1,8.5} }
+                string message = "{ Warenkorb - @" + warenKorbNr.ToString() + "{ Produkt - @" + produktNr1.ToString() + ", @2, @1.75 } { Produkt - @" + produktNr2.ToString() + ", @1, @8.5 } }";
 
                 Console.Write("##### Sending message: " + message);
 
