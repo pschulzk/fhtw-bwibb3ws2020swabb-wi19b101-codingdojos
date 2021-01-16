@@ -22,12 +22,8 @@ namespace CryptoStock.Communication
         {
             this.logger = logger;
             Informer = informer;
-            tcpServer = new TcpListener(IPAddress.Loopback, 8090);
-            Init();
-        }
 
-        private void Init()
-        {
+            tcpServer = new TcpListener(IPAddress.Loopback, 8090);
             tcpServer.Start();
             Thread t = new Thread(AcceptClients) { IsBackground = true };
             t.Start();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoStock.Helpers
 {
-    class CustomLogger
+    public class CustomLogger
     {
         public readonly List<string> logs;
 

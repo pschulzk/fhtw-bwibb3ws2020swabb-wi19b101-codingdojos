@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="CryptoStock.Views.WalletList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:CryptoStock.Views"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" d:DesignWidth="800"
+    DataContext="{Binding WalletListVm, Mode=OneWay, Source={StaticResource Locator}}"
+>
+    <Grid>
+        <DataGrid ItemsSource="{Binding WalletList}" SelectedItem="{Binding SelectedEntry}" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Binding="{Binding Balance}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" CommandParameter="{Binding DataContext.SelectedEntry, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:WalletList}}}" Command="{Binding DataContext.DeleteBtnClicked, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:WalletList}}}"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Margin="10" Content="New Data" Command="{Binding DeleteBtnClicked}" CommandParameter="NewData"/>
+    </Grid>
+</UserControl>

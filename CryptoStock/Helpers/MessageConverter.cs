@@ -8,7 +8,7 @@ namespace CryptoStock.Helpers
     class MessageConverter
     {
 
-        public Wallet Convert(string message)
+        public static Wallet Convert(string message)
         {
             //ID@Name@Balance
             string[] temp = message.Split('@');

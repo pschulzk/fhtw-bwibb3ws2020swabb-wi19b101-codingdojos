@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace CryptoStock.Models
 {
-    class Wallet
+    public class Wallet
     {
+        public bool Active { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public int Balance { get; set; }
 
         public Wallet(int id, string name, int balance = 0)
         {
+            Active = true;
             Id = id;
             Name = name;
             Balance = balance;
