@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamBB05App"
+        xmlns:converters="clr-namespace:ExamBB05App.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
 >
+    <Window.Resources>
+        <converters:IntToBrushConverter x:Key="IntToBrushConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -46,7 +50,7 @@
                             <Label Content="{Binding Id}" />
                             <Label Content="{Binding Price}"/>
                             <Label Content="{Binding Amount}"/>
-                            <Rectangle Fill="Green" Width="50" Height="20" VerticalAlignment="Center"></Rectangle>
+                            <Rectangle Fill="{Binding Amount, Converter={StaticResource IntToBrushConverter}, Mode=OneWay}" Width="50" Height="20" VerticalAlignment="Center"></Rectangle>
                             <Button Background="Azure" Margin="5" Content="Delete" Command="{Binding DataContext.DeleteProdukt, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"/>
                         </StackPanel>
                     </Border>
