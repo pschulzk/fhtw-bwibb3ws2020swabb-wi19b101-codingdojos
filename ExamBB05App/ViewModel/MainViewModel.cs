@@ -88,16 +88,14 @@ namespace ExamBB05App.ViewModel
                 DeleteAlleProdukte = new RelayCommand<Warenkorb>(
                     (Warenkorb w) =>
                     {
-                        System.Diagnostics.Debug.WriteLine("!!! DeleteAlleProdukte: " + w.Id.ToString());
                         foreach (Warenkorb warenkorb in Warenkoerbe)
                         {
-                            if (selectedWarenkorb == warenkorb)
+                            if (w == warenkorb)
                             {
-                                break;
+                                warenkorb.Produkte.Clear();
+                                UpdateProps();
                             }
                         }
-
-                        UpdateProps();
                     });
             }
 

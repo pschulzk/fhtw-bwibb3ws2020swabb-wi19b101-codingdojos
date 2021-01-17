@@ -14,7 +14,7 @@ namespace ExamBB05App.ViewModel
 
         public ObservableCollection<Produkt> Produkte { get; set; }
 
-        public string MengeAllerProdukte
+        public int MengeAllerProdukte
         {
             get
             {
@@ -23,11 +23,11 @@ namespace ExamBB05App.ViewModel
                 {
                     summe = summe + p.Amount;
                 }
-                return summe.ToString();
+                return summe;
             }
         }
 
-        public string WertAllerProdukte
+        public float WertAllerProdukte
         {
             get
             {
@@ -36,7 +36,7 @@ namespace ExamBB05App.ViewModel
                 {
                     summe = summe + p.Price;
                 }
-                return summe.ToString() + " €";
+                return summe;
             }
         }
 
