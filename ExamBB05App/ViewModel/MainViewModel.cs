@@ -42,6 +42,8 @@ namespace ExamBB05App.ViewModel
 
         public RelayCommand<Produkt> DeleteProdukt { get; set; }
 
+        public RelayCommand<Warenkorb> DeleteAlleProdukte { get; set; }
+
         readonly Server serverConnection;
 
         /// <summary>
@@ -68,9 +70,30 @@ namespace ExamBB05App.ViewModel
                             {
                                 if (produkt == p)
                                 {
-                                    warenkorb.Produkte.Remove(produkt);
+                                    if (produkt.Amount > 1)
+                                    {
+                                        produkt.Amount = produkt.Amount - 1;
+                                    }
+                                    else
+                                    {
+                                        warenkorb.Produkte.Remove(produkt);
+                                    }
+                                    UpdateProps();
                                     break;
                                 }
+                            }
+                        }
+                    });
+
+                DeleteAlleProdukte = new RelayCommand<Warenkorb>(
+                    (Warenkorb w) =>
+                    {
+                        System.Diagnostics.Debug.WriteLine("!!! DeleteAlleProdukte: " + w.Id.ToString());
+                        foreach (Warenkorb warenkorb in Warenkoerbe)
+                        {
+                            if (selectedWarenkorb == warenkorb)
+                            {
+                                break;
                             }
                         }
 
@@ -96,9 +119,7 @@ namespace ExamBB05App.ViewModel
                 }
             }
 
-            RaisePropertyChanged("Warenkoerbe");
-            RaisePropertyChanged("SumAmountProdukte");
-            RaisePropertyChanged("SumPriceProdukte");
+            RaisePropertyChanged();
         }
 
         public void GuiUpdater(string message)

@@ -27,7 +27,6 @@ namespace ExamBB05Client
 
             System.Timers.Timer timer = new System.Timers.Timer(1000);
             timer.Elapsed += (s, e) => OnTimedEvent(s, e);
-            // Thread.Sleep(1000); //1 second delay
             timer.Start();
             Console.ReadLine();
             timer.Stop();
@@ -39,7 +38,7 @@ namespace ExamBB05Client
                 int produktNr2 = GetId();
 
                 // { Warenkorb - @WarenkorbNr{ Produkt - @ProduktNr,2,1.75} { Produkt - @ProduktNr,1,8.5} }
-                string message = "{ Warenkorb - @" + warenKorbNr.ToString() + "{ Produkt - @" + produktNr1.ToString() + ", @2, @1.75 } { Produkt - @" + produktNr2.ToString() + ", @1, @8.5 } }";
+                string message = "{ Warenkorb - @" + warenKorbNr.ToString() + "{ Produkt - @" + produktNr1.ToString() + ", @5, @1.75 } { Produkt - @" + produktNr2.ToString() + ", @1, @8.5 } }";
 
                 Console.Write("##### Sending message: " + message + "\r\n");
 

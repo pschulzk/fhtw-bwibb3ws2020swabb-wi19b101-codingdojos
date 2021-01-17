@@ -25,10 +25,12 @@
         <ListBox Grid.Row="1" Margin="10" ItemsSource="{Binding Warenkoerbe}" SelectedItem="{Binding SelectedWarenkorb}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Blue" BorderThickness="3" CornerRadius="3">
+                    <Border BorderBrush="Gray" BorderThickness="1">
                         <StackPanel Orientation="Horizontal">
-                            <Rectangle Width="35" Height="20" Margin="5"/>
-                            <Label Content="{Binding Id}"/>
+                            <Label Grid.Column="0" Content="Warenkorb"/>
+                            <Label Grid.Column="0" Content="{Binding Id}"/>
+                            <Label Grid.Column="1" Content="{Binding MengeAllerProdukte}"/>
+                            <Label Grid.Column="2" Content="{Binding WertAllerProdukte}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
@@ -38,25 +40,38 @@
         <ListBox Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding SelectedWarenkorb.Produkte}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Blue" BorderThickness="3" CornerRadius="4">
-                        <StackPanel Orientation="Vertical">
+                    <Border BorderBrush="Blue" BorderThickness="2" CornerRadius="3">
+                        <StackPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Stretch">
+                            <Label Content="Produkt"/>
                             <Label Content="{Binding Id}" />
-                            <Button Background="Azure" Margin="5" Content="Löschen" Command="{Binding DataContext.DeleteProdukt, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"/>
+                            <Label Content="{Binding Price}"/>
+                            <Label Content="{Binding Amount}"/>
+                            <Rectangle Fill="Green" Width="50" Height="20" VerticalAlignment="Center"></Rectangle>
+                            <Button Background="Azure" Margin="5" Content="Delete" Command="{Binding DataContext.DeleteProdukt, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
-            <StackPanel Orientation="Horizontal">
-                <Label  Margin="5" Width="250" Content="Summe aller Produkte: "/>
-                <Label Content="{Binding SumAmountProdukte}" FontSize="15"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="5" Width="250" Content="Summe aller Produkte: "/>
+                    <Label Content="{Binding SumAmountProdukte}" FontSize="15"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Margin="5" Width="250" Content="Geldsumme aller Produkte: "/>
+                    <Label Content="{Binding SumPriceProdukte}" FontSize="15"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Margin="5" Width="250" Content="Geldsumme aller Produkte: "/>
-                <Label Content="{Binding SumPriceProdukte}" FontSize="15"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Width="250">
+                <Button Background="Azure" Margin="5" Content="Delete all" Command="{Binding DeleteAlleProdukte}" CommandParameter="{Binding SelectedWarenkorb}"/>
             </StackPanel>
         </StackPanel>
+
+
+
     </Grid>
 </Window>
