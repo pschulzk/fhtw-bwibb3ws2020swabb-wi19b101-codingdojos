@@ -10,6 +10,10 @@ namespace ExamBB05App.ViewModel
 {
     public class Warenkorb : ViewModelBase
     {
+        public int Id { get; set; }
+
+        public ObservableCollection<Produkt> Produkte { get; set; }
+
         public string MengeAllerProdukte
         {
             get
@@ -41,10 +45,7 @@ namespace ExamBB05App.ViewModel
             Id = id;
             Produkte = new ObservableCollection<Produkt>();
         }
-
-        public int Id { get; set; }
-
-        public ObservableCollection<Produkt> Produkte { get; set; }
+        
 
     }
 }

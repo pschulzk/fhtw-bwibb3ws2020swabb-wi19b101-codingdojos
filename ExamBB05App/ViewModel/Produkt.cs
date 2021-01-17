@@ -9,6 +9,12 @@ namespace ExamBB05App.ViewModel
 {
     public class Produkt : ViewModelBase
     {
+        public int Id { get; set; }
+
+        public int Amount { get; set; }
+
+        public float Price { get; set; }
+
         public Produkt(int id, int amount, float price)
         {
             this.Id = id;
@@ -16,10 +22,13 @@ namespace ExamBB05App.ViewModel
             this.Price = price;
         }
 
-        public int Id { get; set; }
+        public void Reduce()
+        {
+            if (Amount < 2) return;
+            Amount = Amount - 1;
+            RaisePropertyChanged("Amount");
+        }
 
-        public int Amount { get; set; }
 
-        public float Price { get; set; }
     }
 }

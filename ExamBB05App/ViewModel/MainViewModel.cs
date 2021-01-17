@@ -72,7 +72,7 @@ namespace ExamBB05App.ViewModel
                                 {
                                     if (produkt.Amount > 1)
                                     {
-                                        produkt.Amount = produkt.Amount - 1;
+                                        produkt.Reduce();
                                     }
                                     else
                                     {
